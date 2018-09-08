@@ -1,36 +1,26 @@
 class GravityPuzzleEm
-  def solve(answer)
-    # masterarray = []
-    # answer.each do |line|
-    #   line.each do |char|
-    #     stringarr = []
-    #     stringarr << char
-    #     masterarray << stringarr
-    #   end
-    # end
-
-    # get the length of the array
-    length = answer.count
-
-    # iterate the array with index
-    answer.each_with_index do |row, rowindex|
-      # interate each string with the index
-      row.each_char.with_index do |char, charindex|
-        # if it hits the bottom, the code won't work
-        unless rowindex == row[-1]
-          # set the start counter as 1 so it can find the next row of the column and compare
-          counter = 1
-          # until a # is found or hits the buttom, the code will loop
-          until row[rowindex + counter][charindex] == "#" || counter == length - rowindex
-            counter += 1
-            if row[rowindex][charindex] == '#' && row[rowindex + counter][charindex] == '.'
-              row[rowindex][charindex] = '.'
-              row[rowindex + counter][charindex] = '#'
-            end
-          end
-          end
+  def columns(answer)
+    # define an empty array
+    columns = []
+    # iterate the array
+    answer.each do |string|
+      # iterate the string
+      string.split("").each_with_index do |char, index|
+        # if the columns/array is empty then push the char indside the columns
+        if columns[index]
+          columns[index] << char
+        # else make it in an array and push it to the masterarray
+        else
+          columns[index] = [char]
         end
       end
     end
+    # print out the columns
+    return columns
+  end
+
+  def swap(columns)
+    # awap the order in the list
+    columns.map! { |col| col.sort.reverse! }
   end
 end
