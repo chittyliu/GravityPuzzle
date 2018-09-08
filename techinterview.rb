@@ -5,6 +5,7 @@ class GravityPuzzleEm
     # iterate the array
     answer.each do |string|
       # iterate the string
+      # => ["#", "."], [".", "#"], ["#", "#"]
       string.split("").each_with_index do |char, index|
         # if the columns/array is empty then push the char indside the columns
         if columns[index]
@@ -15,12 +16,18 @@ class GravityPuzzleEm
         end
       end
     end
-    # print out the columns
+    # will be an array of arraies of strings
+    # => [["#", "."], [".", "#"], ["#", "#"]]
     return columns
   end
 
+  # run the previous method and store it in a var
+  columns = columns(answer)
+
   def swap(columns)
     # awap the order in the list
-    columns.map! { |col| col.sort.reverse! }
+    columns.map! do |col|
+      col.sort.reverse!
+    end
   end
 end
