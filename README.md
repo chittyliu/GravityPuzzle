@@ -13,5 +13,5 @@ The `solve` method should return an array of strings with the "#" and "."  sorte
 ```ruby
 p solve(["##.", "..#", "#.."])
 
-# => [".##", "..#", "..#"]
+# => ["...", "#..", "###"]
 ```

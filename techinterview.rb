@@ -5,7 +5,7 @@ class GravityPuzzleEm
     # iterate the array
     answer.each do |string|
       # iterate the string
-      # => ["#", "."], [".", "#"], ["#", "#"]
+      # => ["#", "#", "."], [".", ".", "#"], ["#", ".", "."]
       string.split('').each_with_index do |char, index|
         # if the columns/array is empty then push the char indside the columns
         if columns[index]
@@ -19,10 +19,9 @@ class GravityPuzzleEm
     # will be an array of arraies of strings
     # => [["#", ".", "#"], ["#", "#", "."]]
     columns.map! do |col|
-      col.sort.reverse!
+      col.sort.reverse.transpose.join('')
       # => [[".", "#", "#"], [".", ".", "#"], [".", ".", "#"]]
-      col.join('')
-      # => [".##", "..#", "..#"]
+      # => ["...", "#..", "###"]
     end
   end
   p solve(["##.", "..#", "#.."])
