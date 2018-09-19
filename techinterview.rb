@@ -19,8 +19,12 @@ class GravityPuzzleEm
     # will be an array of arraies of strings
     # => [["#", ".", "#"], ["#", "#", "."]]
     columns.map! do |col|
-      col.sort.reverse.transpose.join('')
+      col.sort.reverse
       # => [[".", "#", "#"], [".", ".", "#"], [".", ".", "#"]]
+    end
+    columns.transpose.map! do |col|
+      # => [[".", ".", "."], ["#", ".", "."], ["#", "#", "#"]]
+      col.join('')
       # => ["...", "#..", "###"]
     end
   end
